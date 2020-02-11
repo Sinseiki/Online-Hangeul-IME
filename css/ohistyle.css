@@ -1,6 +1,8 @@
 		body { margin: 8pt 0; overflow:scroll; }
 		body, th, td, input {	font-family:'맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장'; }
-		span.emph { color:black; }
+		em{ color:black; font-style:normal}
+		.ls3{letter-spacing:-0.3em}
+		.ls4{letter-spacing:-0.4em}
 		div.title { color:tan; font-weight:bold; font-size:18pt; font-family:NanumGothic,나눔고딕;line-height:14pt; padding-bottom:6pt; }
 		div#content { margin:5px auto 0 auto; width:600px; }
 		div#ohi_wrap, textarea { font-size:10pt; }
@@ -10,7 +12,7 @@
 		div.menu a { color:#000; text-decoration:none; }
 		/*div.menu a:hover { cursor:pointer; background-color:burlywood; }*/
 		div.this { background-color:bisque; }
-		div.over, kbd.over, div.menu:hover { cursor:pointer; background-color:burlywood; }
+		div.over, kbd:hover, div.menu:hover { cursor:pointer; background-color:burlywood; }
 
 		div.left_menu, div.right_menu { display:inline; }
 		div.right_menu { float:right; }
@@ -104,3 +106,5 @@
 		div.credit { font-family:Arial,sans-serif; font-size:10pt; color:RosyBrown; text-align:center; line-height:1.4em; }
 		div.credit a { color:RosyBrown; text-decoration:none; font-weight:bold; }
 		div.credit a:hover { text-decoration:underline; }
+
+		.korEngStatus:hover{cursor:pointer; background-color:burlywood}

@@ -16,27 +16,25 @@
 	<script type="text/javascript" src="js/lib/prefixfree.min.js"></script>
 	<script type="text/javascript" src="js/lib/append_child.js"></script>
 	
-	<script type="text/javascript" src="js/keyboard_layouts.js"></script>
-	<script type="text/javascript" src="js/ohi.js"></script>
 </head>
 
 <body>
 <div id="content">
 	<div class="title">
-		<span class="emph">오</span>라이 <span class="emph" style="letter-spacing:-0.4em;">ㅎ</span><span style="letter-spacing:-0.3em;">ㅏ</span>그 <span class="emph">이</span>려기 -
-		<span class="emph">O</span>nline <span class="emph">H</span>anGeul <span class="emph">I</span>ME
-		<br />ㄴ　<span style="letter-spacing:-0.4em;">ㄴ</span>　ㄴㄹ ㅂㄱ
+		<em>오</em>라이 <em class="ls4">ㅎ</em><span class="ls3">ㅏ</span>그 <em>이</em>려기 -
+		<em>O</em>nline <em>H</em>anGeul <em>I</em>ME
+		<br />ㄴ　<span class="ls4">ㄴ</span>　ㄴㄹ ㅂㄱ
 	</div>
 	<div id="ohi_wrap">
 		<div id="ohi_menu">
 			<div class="left_menu">
-				<div class="this" id="menu1" onclick="gotoTab(1)" onmouseover="this.className+=' over'" onmouseout="this.className=this.className.replace(' over','')">
+				<div class="this" id="menu1">
 					<span>글 넣기</span>
 				</div>
-				<div class="menu" id="menu2" onclick="gotoTab(2)" onmouseover="this.className+=' over'" onmouseout="this.className=this.className.replace(' over','')">
+				<div class="menu" id="menu2">
 					<span>찾기</span>
 				</div>
-				<div class="menu" id="menu3" onclick="gotoTab(3)" onmouseover="this.className+=' over'" onmouseout="this.className=this.className.replace(' over','')">
+				<div class="menu" id="menu3">
 					<span>도움말</span>
 				</div>
 			</div>
@@ -56,11 +54,11 @@
 				<ul>
 					<li>
 						한·영 상태 : 
-						<kbd class="menu" onclick="javascript:ohiChange_KE();inputText_focus()" onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Space</kbd> 또는
-						<kbd class="menu" onclick="javascript:ohiChange_KE();inputText_focus()" onmouseover="this.className='over'" onmouseout="this.className='menu'">Shift+Space</kbd>
+						<kbd class="menu korEngStatus">Ctrl+Space</kbd> 또는
+						<kbd class="menu korEngStatus">Shift+Space</kbd>
 					</li>
 					<li>
-						기준 자판 : <kbd class="menu" onclick="javascript:ohiChange_KBD_type();inputText_focus()" onmouseover="this.className='over'" onmouseout="this.className='menu'">Ctrl+Enter</kbd> 【<kbd class="menu" onclick="ohiChange_KBD_type('QWERTY');inputText_focus()">QWERTY</kbd> - <kbd class="menu" onclick="ohiChange_KBD_type('QWERTZ');inputText_focus()">QWERTZ</kbd> - <kbd class="menu" onclick="ohiChange_KBD_type('AZERTY');inputText_focus()">AZERTY</kbd>】
+						기준 자판 : <kbd class="menu ruleKBD">Ctrl+Enter</kbd> 【<kbd class="menu ruleKBDQWERTY">QWERTY</kbd> - <kbd class="menu ruleKBDQWERTZ">QWERTZ</kbd> - <kbd class="menu ruleKBDAZERTY">AZERTY</kbd>】
 					</li>
 				</ul>
 				<ul>
@@ -405,7 +403,11 @@
 		This version was modified by Pat-Al &lt;pat@pat.im&gt; (<a href="https://pat.im/910" target="_blank">https://pat.im/910</a>).<br />
 	</div>
 </div>
+
+<script type="text/javascript" src="js/keyboard_layouts.js"></script>
 <script type="text/javascript" src="js/additional_layouts.js"></script>
+<script type="text/javascript" src="js/ohi.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>

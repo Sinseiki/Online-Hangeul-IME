@@ -173,6 +173,8 @@ var prev_class = []; // 바로 앞에 모아친 줄임말의 종류(품사 등)
 var pressing_keys = 0; // 눌려 있는 글쇠 수
 var double_multikey_abbreviated_state = 0; // 줄여넣기를 두 차례 잇달아 했는지를 나타냄
 
+var ohi_menu_num = 1;
+
 function NFD_stack() { // 먼저 넣은 낱자 정보가 배열의 뒤에 들어가고, 마지막으로 들어온 낱자가 배열의 맨 앞에 들어감
 	var phoneme = []; // 글쇠로 친 첫가끝 낱자들을 겹낱자로 조합하지 않은 채로 담음
 	var phoneme_R = []; // 조합하는 첫가끝 낱자들의 추가 정보를 담음 (보기: 겹홀소리 조합용 홀소리인지, 받침 붙는 홀소리인지)
