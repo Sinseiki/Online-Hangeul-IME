@@ -34,15 +34,16 @@
 
 **/
 
+
 var default_En_type = 'QWERTY';
-var default_Ko_type = 'Sin3-P2';
+var default_Ko_type = '3m-Semoe';
 var default_ohi_KBD_type = 'QWERTY';
 var default_ohi_KE = 'Ko';
 
-var En_type; // 영문 자판 종류 (ohiChange 함수로 바꿈)
-var Ko_type; // 한글 자판 종류 (ohiChange 함수로 바꿈)
-var ohi_KBD_type; // 기준 자판 종류 (QWERTY/QWERTZ/AZERTY, ohiChange_KBD_type 함수로 바꿈)
-var ohi_KE; // 한글·영문 상태 (Ko: 한글, En: 영문) (ohiChange_KE 함수로 바꿈)
+var En_type = 'QWERTY'; // 영문 자판 종류 (ohiChange 함수로 바꿈)
+var Ko_type = '3m-Semoe'; // 한글 자판 종류 (ohiChange 함수로 바꿈)
+var ohi_KBD_type = 'QWERTY'; // 기준 자판 종류 (QWERTY/QWERTZ/AZERTY, ohiChange_KBD_type 함수로 바꿈)
+var ohi_KE = 'Ko'; // 한글·영문 상태 (Ko: 한글, En: 영문) (ohiChange_KE 함수로 바꿈)
 
 function option() {
 	var enable_double_final_ext; // 겹받침 확장 배열 쓰기 --> ohiChange_enable_double_final_ext() 함수로 값을 바꿈

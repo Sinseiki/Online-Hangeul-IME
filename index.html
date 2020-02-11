@@ -6,163 +6,21 @@
 	<title>온라인 한글 입력기 (Online Hangeul IME)</title>
 	<meta name="Description" content="한글 입력기가 깔리지 않은 곳에서도 쓸 수 있는 웹 한글 입력기 (on-screen web IME for Korean Hangeul keyboards)" />
 	<meta name="Keywords" content="Hangeul, Hangul, Korean, IME, Input Method, keyboard layout, Javascript, 한글, 영문, 자판 배열, 세벌식, 두벌식, 옛한글, 타자기, QWERTY, Dvorak, Colemak, Workman, QWERTZ, AZERTY" />
-	<script type="text/javascript">
-	<!--
-		Ko_type = 'Sin3-P2';  // 한글 자판
-		En_type = 'QWERTY';  // 영문 자판
-		ohi_KBD_type = 'QWERTY';  // 기준 자판 (QWERTY, QWERTZ, AZERTY)
-		ohi_KE = 'Ko';  // 시작할 때의 한·영 상태 (한글: Ko, 영문: En)
-	-->
-	</script>
-	<script type="text/javascript" src="keyboard_layouts.js"></script>
-	<script type="text/javascript" src="additional_layouts.js"></script>
-	<script type="text/javascript" src="ohi.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/ohistyle.css"/>
 
-	<script type="text/javascript">
-	<!--
-		var ohi_menu_num = 1;
-		function gotoTab(n) {
-			ohi_menu_num = n;
-			for(var i=1; i<=3; i++) {
-				document.getElementById('menu'+i).className = (i==n) ? 'this' : 'menu';
-				document.getElementById('tab'+i).style.height = (i==n) ? 'auto' : '1px';
-				//document.getElementById('tab'+i).style.position = (i==n) ? '' : 'absolute';
-				document.getElementById('tab'+i).style.overflow = (i==n) ? 'visible' : 'hidden';
-				document.getElementById('tab'+i).style.visibility = (i==n) ? 'visible' : 'hidden';
-			}
-			document.getElementById('manual').style.display = (n!=3) ? 'block' : 'none';
-			show_keyboard_layout();
-		}
-
-		function appendChild(parentNode,nodeName,className,idName,innerHTML,width,padding) {
-			var childNode = document.createElement(nodeName);
-				if(className) childNode.className = className;
-				if(idName) childNode.id = idName;
-				if(innerHTML) childNode.innerHTML = innerHTML;
-				if(width) childNode.style.width = width;
-				if(padding) childNode.style.padding = padding;
-				parentNode.appendChild(childNode);
-				return childNode;
-		}
-	//-->
-	</script>
-
-	<style type="text/css">
-	<!--
-		body { margin: 8pt 0; overflow:scroll; }
-		body, th, td, input {	font-family:'맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장'; }
-		span.emph { color:black; }
-		div.title { color:tan; font-weight:bold; font-size:18pt; font-family:NanumGothic,나눔고딕;line-height:14pt; padding-bottom:6pt; }
-		div#content { margin:5px auto 0 auto; width:600px; }
-		div#ohi_wrap, textarea { font-size:10pt; }
-
-		div#ohi_menu {}
-		div.menu, div.this { display:inline; font-size:11pt; font-weight:bold; padding:1px 14px 1px 16px; border-style:solid; border-color:wheat; }
-		div.menu { cursor:pointer; background-color:snow; }
-		div.menu a { color:#000; text-decoration:none; }
-		/*div.menu a:hover { cursor:pointer; background-color:burlywood; }*/
-		div.this { background-color:bisque; }
-		div.over, kbd.over, div.menu:hover { cursor:pointer; background-color:burlywood; }
-
-		div.left_menu, div.right_menu { display:inline; }
-		div.left_menu {}
-		div.right_menu { float:right; }
-
-		div.left_menu div.menu, div.left_menu div.this, div.right_menu div.menu, div.right_menu div.this { border-width:2px 2px 2px 0; }
-		div.left_menu div:first-child, div.right_menu div:first-child { border-width:2px; }
-
-		div#ohi_content { clear:both; border:solid 2px wheat; background-color:oldlace; padding:0 6px 0 4px; margin-top:1px; }
-
-		input.text, textarea#inputText { border:solid 1px wheat; ime-mode:disable; resize:vertical; }
-		textarea#inputText { width:572px; margin:0 0 0 5px; font-family:'함초롬돋움 LVT','HCR Dotum LVT','함초롬바탕 LVT','본고딕','Source Han Sans K','본고딕 KR','Source Han Sans KR','Noto Sans CJK KR','나눔바른고딕 옛한글','NanumBarunGothic YetHangul','나눔명조 옛한글','NanumMyeongjo YetHangul','HCR dotum','함초롬돋움','함초롬돋움 확장','함초롬바탕','함초롬바탕 확장','Un Jamo Batang Ex','은 자모 바탕 확장',Unbatang,'은 바탕',Undotum,'은 돋움','맑은 고딕','Malgun Gothic','NanumGothic',나눔고딕; }
-		form { margin: 0; padding: 0; }
-
-		div#manual { display:block; margin: 0 0 0.4em 5px; }
-		div#manual a { margin-right:0.3em; }
-		div#manual ul { margin:0.8em 0; }
-		div#manual ul li { text-align:left; text-indent:-55px; padding-left:53px; list-style-position:inside; word-break:keep-all; }
-		div#manual div#more_layouts_wrap { margin:0 0 0em 0; }
-		div#manual, div#tab1, div#tab2, div#tab3 { width:570px; }
-		div#tab2 { height:1px; overflow:hidden; visibility:hidden; }
-		div#tab2 #searchEngines { margin:14px auto; display:table; }
-		div#tab2 .searchEngine { margin: 0 5em 0.4em 0; }
-		div#tab2 .searchEngine div.label_wrap { display:inline-block; width:8em; text-align:right; }
-		div#tab2 .searchEngine label.name { font-weight:bold; }
-		div#tab2 .searchEngine input.text { width:300px; }
-		div#tab2 .searchEngine input.submit { width:50px; }
-		div#tab3 { height:1px; overflow:hidden; visibility:hidden; line-height:1.5em; }
-		div#tab3 h2 { font-weight:bold; font-size:16px; margin-left:6px; }
-		div#tab3 ol, div#tab3 li { margin:0 10px 5px 0;}
-		div#tab3 a { text-decoration:none; font-weight:bold; color:#23a; }
-		div#tab3 a:hover { text-decoration:underline; }
-
-		div.layout_group_tab { display:none; }
-		a.layout_group_link { text-decoration:none; color:#00b; }
-
-		#top_options { margin:0 0.5em 0 0; }
-		#middle_options { margin:0 0.5em 1.7em 0; }
-		#top_options .option, #middle_options .option, #NCR_options .option, #NCR_options { float:right; }
-		.option label { font-size:12px; }
-		.option label a { text-decoration:none; }
-		.option input.checkbox { margin-left:15px; vertical-align:middle; }
-
-		div#keyboardLayout { margin:2px 0 3px 0; clear:both; }
-		div#keyboardLayout .show_layout { height:1.5em; }
-		div#keyboardLayout span.menu { float:right; }
-		div#keyboardLayoutInfo { float:left; margin:0 0 0 5px; }
-		div#keyboardLayoutInfo a {text-decoration:none;}
-		div#keyboardLayoutVisibility { float:right; }		
-
-		#NCR_options { margin-top:0px; height:1em; clear:both; }
-
-		#keyboardLayoutTable { clear:both; width:586px; margin:0 auto; }
-		#keyboardLayoutTable .row { margin:0; }
-
-		div.e1, div.e2, div.e3, div.h1, div.h2, div.h3 {
-			display:inline-block; font-size:13px; vertical-align:bottom; height:38px; cursor:pointer;
-			border-width:2px; border-style:solid; border-color:#fff #aaa #aaa #fff;
-		}
-		div.e1 { background-color:wheat; }
-		div.e2 { background-color:#C5D2E7; }
-		div.e3 { background-color:antiquewhite; }
-		div.h1 { background-color:lightblue; }
-		div.h2 { background-color:lightpink; }
-		div.gin-hol { background-color:#ccbbff; }
-		div.h3 { background-color:lightgreen; }
-		div.e1:hover, div.e2:hover, div.e3:hover, div.h1:hover, div.h2:hover, div.h3:hover { background-color:#EBF4FA; }
-		div.e1:active, div.e2:active, div.e3:active, div.h1:active, div.h2:active, div.h3:active { 
-			border-style:solid; border-width 2px; border-color: #aaa #fff #fff #aaa;
-		}
-		div.pressed { background-color: lightyellow; }
-		kbd { font-family: "Courier New", monospace; word-spacing: -0.3em; }
-		kbd.status { font-family: "GulimChe", monospace; color: white; background-color: royalblue; }
-		div.up, div.down { height:18px; }
-		div.up { margin:2px 1px 0 2px; }
-		@-moz-document url-prefix() { div.up { margin:1px 1px 1px 2px; } }
-		div.down { margin:0 1px 0px 2px; }
-		div.ue, div.de { clear:both; float:left; font-family:'Consolas',monospace,sans-serif; color:#777; }
-		div.e2 div.ue { color:#000; }
-		div.dh, div.uh { float:right; }
-
-		div#row4 div.ue, div#row4 div.de { margin:0px auto; width:100%; text-align:center; }
-		div#row4 #ue56 { text-align:left; }
-		div#row4 div.up, div#row4 div.down {}
-		div#row4 .special div.ue, div#row4 .special div.de  { font-size:12px; font-family:'맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장'}
-
-		span.menu, kbd.menu { cursor: pointer; background-color:bisque; }
-
-		div#NCR { background-color:#FFFEFD; display:none; width:580px; border:solid 2px wheat; margin-top:10px; word-break:break-all; }
-
-		div.ref { padding:0.5em 0 0.5em 0; clear:both; }
-		div.ref p { text-indent:-0.7em; padding:0 0 0 1em; margin:3px 0; }
-		div.credit { font-family:Arial,sans-serif; font-size:10pt; color:RosyBrown; text-align:center; line-height:1.4em; }
-		div.credit a { color:RosyBrown; text-decoration:none; font-weight:bold; }
-		div.credit a:hover { text-decoration:underline; }
-	//-->
-	</style>
+	<!-- jQuery 라이브러리 -->
+	<script type="text/javascript" src="js/lib/jquery-3.4.1.min.js"></script>
+	<!-- IE 6~8을 위한 라이브러리 -->
+	<script type="text/javascript" src="js/lib/html5shiv.min.js"></script>
+	<!-- 크로스 브라우징을 위한 라이브러리 -->
+	<script type="text/javascript" src="js/lib/prefixfree.min.js"></script>
+	<script type="text/javascript" src="js/lib/append_child.js"></script>
+	
+	<script type="text/javascript" src="js/keyboard_layouts.js"></script>
+	<script type="text/javascript" src="js/ohi.js"></script>
 </head>
 
-<body onload="show_keyboard_layout(1);inputText_focus()">
+<body>
 <div id="content">
 	<div class="title">
 		<span class="emph">오</span>라이 <span class="emph" style="letter-spacing:-0.4em;">ㅎ</span><span style="letter-spacing:-0.3em;">ㅏ</span>그 <span class="emph">이</span>려기 -
@@ -482,7 +340,7 @@
 						<a href="javascript:(function(){var s=[],i;for(i=0;i<3;++i){s[i]=document.createElement('script');}if(typeof ohiStart=='undefined') {s[0].src='//ohi.pat.im/keyboard_layouts.js';s[1].src='//ohi.pat.im/additional_layouts.js';s[2].src='//ohi.pat.im/ohi.js';for(i=0;i<3;++i) document.body.appendChild(s[i]);}setTimeout(function(){ohiChange('Ko','3-P3')},1000)})()">3-P3</a>
 					</li>
 					<li>
-						오른쪽 아래에 나타나는 보람줄의 왼쪽에 있는 <kbd class="status" style="color:#Gold">&nbsp;KO&nbsp;</kbd> 또는 <kbd class="status" style="color:#Gold">&nbsp;EN&nbsp;</kbd>을 딸깍하여 한·영 상태를 바꿀 수도 있습니다.
+						오른쪽 아래에 나타나는 보람줄의 왼쪽에 있는 <kbd class="status" style="color:Gold">&nbsp;KO&nbsp;</kbd> 또는 <kbd class="status" style="color:Gold">&nbsp;EN&nbsp;</kbd>을 딸깍하여 한·영 상태를 바꿀 수도 있습니다.
 						그 옆에 있는 항목들을 딸깍하여 한·영 배열 종류와 기준 자판(QWERTY, QWERTZ, AZERTY)을 바꿀 수 있습니다.
 					</li>
 				</ul>
@@ -547,5 +405,7 @@
 		This version was modified by Pat-Al &lt;pat@pat.im&gt; (<a href="https://pat.im/910" target="_blank">https://pat.im/910</a>).<br />
 	</div>
 </div>
+<script type="text/javascript" src="js/additional_layouts.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
