@@ -12,8 +12,7 @@
 		div.menu a { color:#000; text-decoration:none; }
 		/*div.menu a:hover { cursor:pointer; background-color:burlywood; }*/
 		div.this { background-color:bisque; }
-		div.over, kbd:hover, div.menu:hover { cursor:pointer; background-color:burlywood; }
-
+		
 		div.left_menu, div.right_menu { display:inline; }
 		div.right_menu { float:right; }
 
@@ -107,4 +106,5 @@
 		div.credit a { color:RosyBrown; text-decoration:none; font-weight:bold; }
 		div.credit a:hover { text-decoration:underline; }
 
-		.korEngStatus:hover{cursor:pointer; background-color:burlywood}
+		.korEngStatus:hover,.ruleKBDEN:hover{cursor:pointer; background-color:burlywood}
+		div.over, kbd:hover, div.menu:hover { cursor:pointer; background-color:burlywood; }
