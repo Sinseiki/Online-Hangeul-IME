@@ -1,110 +1,436 @@
-		body { margin: 8pt 0; overflow:scroll; }
-		body, th, td, input {	font-family:'맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장'; }
-		em{ color:black; font-style:normal}
-		.ls3{letter-spacing:-0.3em}
-		.ls4{letter-spacing:-0.4em}
-		div.title { color:tan; font-weight:bold; font-size:18pt; font-family:NanumGothic,나눔고딕;line-height:14pt; padding-bottom:6pt; }
-		div#content { margin:5px auto 0 auto; width:600px; }
-		div#ohi_wrap, textarea { font-size:10pt; }
+@charset "UTF-8";
+body {
+  margin: 8pt 0;
+  overflow: scroll;
+}
 
-		div.menu, div.this { display:inline; font-size:11pt; font-weight:bold; padding:1px 14px 1px 16px; border-style:solid; border-color:wheat; }
-		div.menu { cursor:pointer; background-color:snow; }
-		div.menu a { color:#000; text-decoration:none; }
-		/*div.menu a:hover { cursor:pointer; background-color:burlywood; }*/
-		div.this { background-color:bisque; }
-		
-		div.left_menu, div.right_menu { display:inline; }
-		div.right_menu { float:right; }
+body, th, td, input {
+  font-family: '맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장';
+}
 
-		div.left_menu div.menu, div.left_menu div.this, div.right_menu div.menu, div.right_menu div.this { border-width:2px 2px 2px 0; }
-		div.left_menu div:first-child, div.right_menu div:first-child { border-width:2px; }
+em {
+  color: black;
+  font-style: normal;
+}
 
-		div#ohi_content { clear:both; border:solid 2px wheat; background-color:oldlace; padding:0 6px 0 4px; margin-top:1px; }
+.ls3 {
+  letter-spacing: -0.3em;
+}
 
-		input.text, textarea#inputText { border:solid 1px wheat; ime-mode:disable; resize:vertical; }
-		textarea#inputText { width:572px; margin:0 0 0 5px; font-family:'함초롬돋움 LVT','HCR Dotum LVT','함초롬바탕 LVT','본고딕','Source Han Sans K','본고딕 KR','Source Han Sans KR','Noto Sans CJK KR','나눔바른고딕 옛한글','NanumBarunGothic YetHangul','나눔명조 옛한글','NanumMyeongjo YetHangul','HCR dotum','함초롬돋움','함초롬돋움 확장','함초롬바탕','함초롬바탕 확장','Un Jamo Batang Ex','은 자모 바탕 확장',Unbatang,'은 바탕',Undotum,'은 돋움','맑은 고딕','Malgun Gothic','NanumGothic',나눔고딕; }
-		form { margin: 0; padding: 0; }
+.ls4 {
+  letter-spacing: -0.4em;
+}
 
-		div#manual { display:block; margin: 0 0 0.4em 5px; }
-		div#manual a { margin-right:0.3em; }
-		div#manual ul { margin:0.8em 0; }
-		div#manual ul li { text-align:left; text-indent:-55px; padding-left:53px; list-style-position:inside; word-break:keep-all; }
-		div#manual div#more_layouts_wrap { margin:0 0 0em 0; }
-		div#manual, div#tab1, div#tab2, div#tab3 { width:570px; }
-		div#tab2 { height:1px; overflow:hidden; visibility:hidden; }
-		div#tab2 #searchEngines { margin:14px auto; display:table; }
-		div#tab2 .searchEngine { margin: 0 5em 0.4em 0; }
-		div#tab2 .searchEngine div.label_wrap { display:inline-block; width:8em; text-align:right; }
-		div#tab2 .searchEngine label.name { font-weight:bold; }
-		div#tab2 .searchEngine input.text { width:300px; }
-		div#tab2 .searchEngine input.submit { width:50px; }
-		div#tab3 { height:1px; overflow:hidden; visibility:hidden; line-height:1.5em; }
-		div#tab3 h2 { font-weight:bold; font-size:16px; margin-left:6px; }
-		div#tab3 ol, div#tab3 li { margin:0 10px 5px 0;}
-		div#tab3 a { text-decoration:none; font-weight:bold; color:#23a; }
-		div#tab3 a:hover { text-decoration:underline; }
+div.title {
+  color: tan;
+  font-weight: bold;
+  font-size: 18pt;
+  font-family: NanumGothic,나눔고딕;
+  line-height: 14pt;
+  padding-bottom: 6pt;
+}
 
-		div.layout_group_tab { display:none; }
-		a.layout_group_link { text-decoration:none; color:#00b; }
+div#content {
+  margin: 5px auto 0 auto;
+  width: 600px;
+}
 
-		#top_options { margin:0 0.5em 0 0; }
-		#middle_options { margin:0 0.5em 1.7em 0; }
-		#top_options .option, #middle_options .option, #NCR_options .option, #NCR_options { float:right; }
-		.option label { font-size:12px; }
-		.option label a { text-decoration:none; }
-		.option input.checkbox { margin-left:15px; vertical-align:middle; }
+div#ohi_wrap, textarea {
+  font-size: 10pt;
+}
 
-		div#keyboardLayout { margin:2px 0 3px 0; clear:both; }
-		div#keyboardLayout .show_layout { height:1.5em; }
-		div#keyboardLayout span.menu { float:right; }
-		div#keyboardLayoutInfo { float:left; margin:0 0 0 5px; }
-		div#keyboardLayoutInfo a {text-decoration:none;}
-		div#keyboardLayoutVisibility { float:right; }		
+div.menu, div.this {
+  display: inline;
+  font-size: 11pt;
+  font-weight: bold;
+  padding: 1px 14px 1px 16px;
+  border-style: solid;
+  border-color: wheat;
+}
 
-		#NCR_options { margin-top:0px; height:1em; clear:both; }
+div.menu {
+  cursor: pointer;
+  background-color: snow;
+}
 
-		#keyboardLayoutTable { clear:both; width:586px; margin:0 auto; }
-		#keyboardLayoutTable .row { margin:0; }
+div.menu a {
+  color: #000;
+  text-decoration: none;
+}
 
-		div.e1, div.e2, div.e3, div.h1, div.h2, div.h3 {
-			display:inline-block; font-size:13px; vertical-align:bottom; height:38px; cursor:pointer;
-			border-width:2px; border-style:solid; border-color:#fff #aaa #aaa #fff;
-		}
-		div.e1 { background-color:wheat; }
-		div.e2 { background-color:#C5D2E7; }
-		div.e3 { background-color:antiquewhite; }
-		div.h1 { background-color:lightblue; }
-		div.h2 { background-color:lightpink; }
-		div.gin-hol { background-color:#ccbbff; }
-		div.h3 { background-color:lightgreen; }
-		div.e1:hover, div.e2:hover, div.e3:hover, div.h1:hover, div.h2:hover, div.h3:hover { background-color:#EBF4FA; }
-		div.e1:active, div.e2:active, div.e3:active, div.h1:active, div.h2:active, div.h3:active { 
-			border-style:solid; border-width:2px; border-color: #aaa #fff #fff #aaa;
-        }
-		div.pressed { background-color: lightyellow; }
-		kbd { font-family: "Courier New", monospace; word-spacing: -0.3em; }
-		kbd.status { font-family: "GulimChe", monospace; color: white; background-color: royalblue; }
-		div.up, div.down { height:18px; }
-		div.up { margin:2px 1px 0 2px; }
-		@-moz-document url-prefix() { div.up { margin:1px 1px 1px 2px; } }
-		div.down { margin:0 1px 0px 2px; }
-		div.ue, div.de { clear:both; float:left; font-family:'Consolas',monospace,sans-serif; color:#777; }
-		div.e2 div.ue { color:#000; }
-		div.dh, div.uh { float:right; }
+/*div.menu a:hover { cursor:pointer; background-color:burlywood; }*/
+div.this {
+  background-color: bisque;
+}
 
-		div#row4 div.ue, div#row4 div.de { margin:0px auto; width:100%; text-align:center; }
-		div#row4 #ue56 { text-align:left; }
-		div#row4 .special div.ue, div#row4 .special div.de  { font-size:12px; font-family:'맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장'}
+div.left_menu, div.right_menu {
+  display: inline;
+}
 
-		span.menu, kbd.menu { cursor: pointer; background-color:bisque; }
+div.right_menu {
+  float: right;
+}
 
-		div#NCR { background-color:#FFFEFD; display:none; width:580px; border:solid 2px wheat; margin-top:10px; word-break:break-all; }
+div.left_menu div.menu, div.left_menu div.this, div.right_menu div.menu, div.right_menu div.this {
+  border-width: 2px 2px 2px 0;
+}
 
-		div.ref { padding:0.5em 0 0.5em 0; clear:both; }
-		div.ref p { text-indent:-0.7em; padding:0 0 0 1em; margin:3px 0; }
-		div.credit { font-family:Arial,sans-serif; font-size:10pt; color:RosyBrown; text-align:center; line-height:1.4em; }
-		div.credit a { color:RosyBrown; text-decoration:none; font-weight:bold; }
-		div.credit a:hover { text-decoration:underline; }
+div.left_menu div:first-child, div.right_menu div:first-child {
+  border-width: 2px;
+}
 
-		.korEngStatus:hover,.ruleKBDEN:hover{cursor:pointer; background-color:burlywood}
-		div.over, kbd:hover, div.menu:hover { cursor:pointer; background-color:burlywood; }
+div#ohi_content {
+  clear: both;
+  border: solid 2px wheat;
+  background-color: oldlace;
+  padding: 0 6px 0 4px;
+  margin-top: 1px;
+}
+
+input.text, textarea#inputText {
+  border: solid 1px wheat;
+  ime-mode: disable;
+  resize: vertical;
+}
+
+textarea#inputText {
+  width: 572px;
+  margin: 0 0 0 5px;
+  font-family: '함초롬돋움 LVT','HCR Dotum LVT','함초롬바탕 LVT','본고딕','Source Han Sans K','본고딕 KR','Source Han Sans KR','Noto Sans CJK KR','나눔바른고딕 옛한글','NanumBarunGothic YetHangul','나눔명조 옛한글','NanumMyeongjo YetHangul','HCR dotum','함초롬돋움','함초롬돋움 확장','함초롬바탕','함초롬바탕 확장','Un Jamo Batang Ex','은 자모 바탕 확장',Unbatang,'은 바탕',Undotum,'은 돋움','맑은 고딕','Malgun Gothic','NanumGothic',나눔고딕;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+div#manual {
+  display: block;
+  margin: 0 0 0.4em 5px;
+}
+
+div#manual a {
+  margin-right: 0.3em;
+}
+
+div#manual ul {
+  margin: 0.8em 0;
+}
+
+div#manual ul li {
+  text-align: left;
+  text-indent: -55px;
+  padding-left: 53px;
+  list-style-position: inside;
+  word-break: keep-all;
+}
+
+div#manual div#more_layouts_wrap {
+  margin: 0 0 0em 0;
+}
+
+div#manual, div#tab1, div#tab2, div#tab3 {
+  width: 570px;
+}
+
+div#tab2 {
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+div#tab2 #searchEngines {
+  margin: 14px auto;
+  display: table;
+}
+
+div#tab2 .searchEngine {
+  margin: 0 5em 0.4em 0;
+}
+
+div#tab2 .searchEngine div.label_wrap {
+  display: inline-block;
+  width: 8em;
+  text-align: right;
+}
+
+div#tab2 .searchEngine label.name {
+  font-weight: bold;
+}
+
+div#tab2 .searchEngine input.text {
+  width: 300px;
+}
+
+div#tab2 .searchEngine input.submit {
+  width: 50px;
+}
+
+div#tab3 {
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+  line-height: 1.5em;
+}
+
+div#tab3 h2 {
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+div#tab3 ol, div#tab3 li {
+  margin: 0 10px 5px 0;
+}
+
+div#tab3 a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #23a;
+}
+
+div#tab3 a:hover {
+  text-decoration: underline;
+}
+
+div.layout_group_tab {
+  display: none;
+}
+
+a.layout_group_link {
+  text-decoration: none;
+  color: #00b;
+}
+
+#top_options {
+  margin: 0 0.5em 0 0;
+}
+
+#middle_options {
+  margin: 0 0.5em 1.7em 0;
+}
+
+#top_options .option, #middle_options .option, #NCR_options .option, #NCR_options {
+  float: right;
+}
+
+.option label {
+  font-size: 12px;
+}
+
+.option label a {
+  text-decoration: none;
+}
+
+.option input.checkbox {
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+div#keyboardLayout {
+  margin: 2px 0 3px 0;
+  clear: both;
+}
+
+div#keyboardLayout .show_layout {
+  height: 1.5em;
+}
+
+div#keyboardLayout span.menu {
+  float: right;
+}
+
+div#keyboardLayoutInfo {
+  float: left;
+  margin: 0 0 0 5px;
+}
+
+div#keyboardLayoutInfo a {
+  text-decoration: none;
+}
+
+div#keyboardLayoutVisibility {
+  float: right;
+}
+
+#NCR_options {
+  margin-top: 0px;
+  height: 1em;
+  clear: both;
+}
+
+#keyboardLayoutTable {
+  clear: both;
+  width: 586px;
+  margin: 0 auto;
+}
+
+#keyboardLayoutTable .row {
+  margin: 0;
+}
+
+div.e1, div.e2, div.e3, div.h1, div.h2, div.h3 {
+  display: inline-block;
+  font-size: 13px;
+  vertical-align: bottom;
+  height: 38px;
+  cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff #aaa #aaa #fff;
+}
+
+div.e1 {
+  background-color: wheat;
+}
+
+div.e2 {
+  background-color: #C5D2E7;
+}
+
+div.e3 {
+  background-color: antiquewhite;
+}
+
+div.h1 {
+  background-color: lightblue;
+}
+
+div.h2 {
+  background-color: lightpink;
+}
+
+div.gin-hol {
+  background-color: #ccbbff;
+}
+
+div.h3 {
+  background-color: lightgreen;
+}
+
+div.e1:hover, div.e2:hover, div.e3:hover, div.h1:hover, div.h2:hover, div.h3:hover {
+  background-color: #EBF4FA;
+}
+
+div.e1:active, div.e2:active, div.e3:active, div.h1:active, div.h2:active, div.h3:active {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #aaa #fff #fff #aaa;
+}
+
+div.pressed {
+  background-color: lightyellow;
+}
+
+kbd {
+  font-family: "Courier New", monospace;
+  word-spacing: -0.3em;
+}
+
+kbd.status {
+  font-family: "GulimChe", monospace;
+  color: white;
+  background-color: royalblue;
+}
+
+div.up, div.down {
+  height: 18px;
+}
+
+div.up {
+  margin: 2px 1px 0 2px;
+}
+
+@-moz-document url-prefix() {
+  div.up {
+    margin: 1px 1px 1px 2px;
+  }
+}
+
+div.down {
+  margin: 0 1px 0px 2px;
+}
+
+div.ue, div.de {
+  clear: both;
+  float: left;
+  font-family: 'Consolas',monospace,sans-serif;
+  color: #777;
+}
+
+div.e2 div.ue {
+  color: #000;
+}
+
+div.dh, div.uh {
+  float: right;
+}
+
+div#row4 div.ue, div#row4 div.de {
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+}
+
+div#row4 #ue56 {
+  text-align: left;
+}
+
+div#row4 .special div.ue, div#row4 .special div.de {
+  font-size: 12px;
+  font-family: '맑은 고딕','Malgun Gothic','함초롬돋움','함초롬돋움 LVT','HCR Dotum LVT','Un Jamo Batang Ex','은 자모 바탕 확장';
+}
+
+span.menu, kbd.menu {
+  cursor: pointer;
+  background-color: bisque;
+}
+
+div#NCR {
+  background-color: #FFFEFD;
+  display: none;
+  width: 580px;
+  border: solid 2px wheat;
+  margin-top: 10px;
+  word-break: break-all;
+}
+
+div.ref {
+  padding: 0.5em 0 0.5em 0;
+  clear: both;
+}
+
+div.ref p {
+  text-indent: -0.7em;
+  padding: 0 0 0 1em;
+  margin: 3px 0;
+}
+
+div.credit {
+  font-family: Arial,sans-serif;
+  font-size: 10pt;
+  color: RosyBrown;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+div.credit a {
+  color: RosyBrown;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+div.credit a:hover {
+  text-decoration: underline;
+}
+
+.korEngStatus:hover, .ruleKBDEN:hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
+
+div.over, kbd:hover, div.menu:hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
+/*# sourceMappingURL=ohistyle.css.map */
