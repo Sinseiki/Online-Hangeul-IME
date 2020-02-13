@@ -13,12 +13,7 @@ function gotoTab(n) {
     $('#manual').css('display', (n != 3) ? 'block' : 'none');
     show_keyboard_layout();
 }
-function menTab(n) {
-    $('#menu' + n).click(function () { gotoTab(n); });
-}
-menTab(1);
-menTab(2);
-menTab(3);
+$('.left_menu div').click(function () { gotoTab(Number($(this).attr('id').charAt(4))); });
 // 한·영 상태 제어부
 $('.korEngStatus').click(function () { ohiChange_KE(); inputText_focus(); });
 // 기준 자판 제어부
